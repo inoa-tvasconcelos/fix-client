@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fixr:repository xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:fixr="http://fixprotocol.io/2020/orchestra/repository" version="FIX.4.4" name="FIX.4.4-Custom">
+	<fixr:metadata>
+		<dc:title>FIX 4.4 Orchestra Repository</dc:title>
+		<dc:creator>Gemini AI Transformer</dc:creator>
+		<dc:publisher>Custom User Repository</dc:publisher>
+		<dc:date>2026-04-26T00:00:00Z</dc:date>
+		<dc:format>Orchestra schema</dc:format>
+	</fixr:metadata>
+
+	<fixr:datatypes>
+		<fixr:datatype name="Int" />
+		<fixr:datatype name="Float" />
+		<fixr:datatype name="Char" />
+		<fixr:datatype name="String" />
+		<fixr:datatype name="UTCTimestamp" />
+		<fixr:datatype name="Boolean" />
+		<fixr:datatype name="Data" />
+		<fixr:datatype name="Length" baseType="Int" />
+		<fixr:datatype name="LocalMktDate" />
+	</fixr:datatypes>
+
+	<fixr:codeSets>
+		<fixr:codeSet name="MsgTypeCodeSet" id="35" type="String">
+			<fixr:code name="Heartbeat" id="35001" value="0" />
+			<fixr:code name="ExecutionReport" id="35008" value="8" />
+			<fixr:code name="OrderSingle" id="35014" value="D" />
+			<fixr:code name="MarketDataSnapshotFullRefresh" id="35023" value="W" />
+			<fixr:code name="IOI" id="35007" value="6" />
+			<fixr:code name="QuoteResponse" id="35036" value="AJ" />
+			<fixr:code name="MarketDataIncrementalRefresh" id="35024" value="X" />
+		</fixr:codeSet>
+
+		<fixr:codeSet name="OrdStatusCodeSet" id="39" type="Char">
+			<fixr:code name="New" id="39001" value="0" />
+			<fixr:code name="PartiallyFilled" id="39002" value="1" />
+			<fixr:code name="Filled" id="39003" value="2" />
+		</fixr:codeSet>
+
+		<fixr:codeSet name="ExecTypeCodeSet" id="150" type="Char">
+			<fixr:code name="New" id="15000" value="0" />
+			<fixr:code name="Trade" id="15015" value="F" />
+		</fixr:codeSet>
+
+		<fixr:codeSet name="MDEntryTypeCodeSet" id="269" type="Char">
+			<fixr:code name="Bid" value="0" />
+			<fixr:code name="Ask" value="1" />
+			<fixr:code name="Trade" value="2" />
+			<fixr:code name="OpenInterest" value="c" />
+			<fixr:code name="ReferencePrice" value="Y" />
+			<fixr:code name="TradeVolume" value="B" />
+			<fixr:code name="OwnBid" value="m" />
+			<fixr:code name="OwnAsk" value="n" />
+		</fixr:codeSet>
+
+		<fixr:codeSet name="QuoteRespTypeCodeSet" id="694" type="Char">
+			<fixr:code name="Pass" value="6" />
+			<fixr:code name="Considered" value="c" />
+		</fixr:codeSet>
+
+		<fixr:codeSet name="MDUpdateActionCodeSet" id="279" type="Char">
+			<fixr:code name="New" value="0" />
+			<fixr:code name="Change" value="1" />
+			<fixr:code name="Delete" value="2" />
+		</fixr:codeSet>
+	</fixr:codeSets>
+
+	<fixr:fields>
+		<fixr:field id="8" name="BeginString" type="String" />
+		<fixr:field id="9" name="BodyLength" type="Length" />
+		<fixr:field id="35" name="MsgType" type="MsgTypeCodeSet" />
+		<fixr:field id="49" name="SenderCompID" type="String" />
+		<fixr:field id="56" name="TargetCompID" type="String" />
+		<fixr:field id="10" name="CheckSum" type="Char" added="FIX.2.7">
+			<fixr:annotation>
+				<fixr:documentation purpose="SYNOPSIS">Three byte, simple checksum...</fixr:documentation>
+			</fixr:annotation>
+		</fixr:field>
+		<fixr:field id="55" name="Symbol" type="String" added="FIX.2.7" />
+		<fixr:field id="48" name="SecurityID" type="Char" added="FIX.2.7" />
+		<fixr:field id="1" name="Account" type="Int" />
+		<fixr:field id="11" name="ClOrdID" type="String" />
+		<fixr:field id="17" name="ExecID" type="String" />
+		<fixr:field id="37" name="OrderID" type="String" />
+		<fixr:field id="38" name="OrderQty" type="Float" />
+		<fixr:field id="39" name="OrdStatus" type="OrdStatusCodeSet" />
+		<fixr:field id="54" name="Side" type="Char" />
+		<fixr:field id="150" name="ExecType" type="ExecTypeCodeSet" />
+		<fixr:field id="112" name="TestReqID" type="Char" added="FIX.3.0" />
+
+		<fixr:field id="23" name="IOIID" type="String" />
+		<fixr:field id="28" name="IOITransType" type="String" />
+		<fixr:field id="44" name="Price" type="Float" />
+		<fixr:field id="225" name="IssueDate" type="LocalMktDate" />
+		<fixr:field id="262" name="MDReqID" type="String" />
+		<fixr:field id="268" name="NoMDEntries" type="Int" />
+		<fixr:field id="269" name="MDEntryType" type="MDEntryTypeCodeSet" />
+		<fixr:field id="270" name="MDEntryPx" type="Float" />
+		<fixr:field id="279" name="MDUpdateAction" type="MDUpdateActionCodeSet" />
+		<fixr:field id="271" name="MDEntrySize" type="Float" />
+		<fixr:field id="277" name="TradeCondition" type="String" />
+		<fixr:field id="282" name="MDEntryOriginator" type="String" />
+		<fixr:field id="537" name="QuoteType" type="Int" />
+		<fixr:field id="693" name="QuoteRespID" type="String" />
+		<fixr:field id="694" name="QuoteRespType" type="QuoteRespTypeCodeSet" />
+
+		<fixr:field id="6215" name="TenorValue" type="String" />
+		<fixr:field id="9216" name="OptionStrategy" type="String" />
+		<fixr:field id="9073" name="CreditMatrixFlag" type="Boolean" />
+		<fixr:field id="9074" name="OcoFlag" type="Boolean" />
+	</fixr:fields>
+
+	<fixr:components>
+		<fixr:component name="StandardHeader" id="1001" category="Session">
+			<fixr:fieldRef id="8" presence="required" />
+			<fixr:fieldRef id="9" presence="required" />
+			<fixr:fieldRef id="35" presence="required" />
+			<fixr:fieldRef id="49" presence="required" />
+			<fixr:fieldRef id="56" presence="required" />
+		</fixr:component>
+		<fixr:component name="StandardTrailer" id="1002" category="Session">
+			<fixr:fieldRef id="10" presence="required" />
+		</fixr:component>
+		<fixr:component name="Instrument" id="1003">
+			<fixr:fieldRef id="55" presence="required" />
+			<fixr:fieldRef id="48" presence="optional" />
+		</fixr:component>
+	</fixr:components>
+
+	<fixr:groups>
+		<fixr:group id="2001" name="MDFullRefreshEntries">
+			<fixr:numInGroup id="268" />
+			<fixr:fieldRef id="269" presence="required" />
+			<fixr:fieldRef id="270" presence="optional" />
+			<fixr:fieldRef id="271" presence="optional" />
+			<fixr:fieldRef id="277" presence="optional" />
+			<fixr:fieldRef id="282" presence="optional" />
+			<fixr:fieldRef id="9073" presence="optional" />
+			<fixr:fieldRef id="9074" presence="optional" />
+		</fixr:group>
+		<fixr:group id="2002" name="MDIncrementalEntries">
+			<fixr:numInGroup id="268" />
+			<fixr:fieldRef id="270" presence="optional" />
+			<fixr:fieldRef id="279" presence="required" />
+			<fixr:fieldRef id="269" presence="required" />
+		</fixr:group>
+	</fixr:groups>
+
+	<fixr:messages>
+		<fixr:message name="Heartbeat" id="1" msgType="0" category="Session">
+			<fixr:structure>
+				<fixr:componentRef id="1001" presence="required" />
+				<fixr:fieldRef id="112" presence="optional" />
+				<fixr:componentRef id="1002" presence="required" />
+			</fixr:structure>
+		</fixr:message>
+		<fixr:message name="ExecutionReport" id="9" msgType="8" category="App">
+			<fixr:structure>
+				<fixr:componentRef id="1001" presence="required" />
+				<fixr:fieldRef id="37" presence="required" />
+				<fixr:fieldRef id="17" presence="required" />
+				<fixr:fieldRef id="150" presence="required" />
+				<fixr:fieldRef id="39" presence="required" />
+				<fixr:componentRef id="1003" presence="required" />
+				<fixr:fieldRef id="54" presence="required" />
+				<fixr:componentRef id="1002" presence="required" />
+			</fixr:structure>
+		</fixr:message>
+
+		<fixr:message name="MarketDataSnapshotFullRefresh" id="23" msgType="W" category="App">
+			<fixr:structure>
+				<fixr:componentRef id="1001" presence="required" />
+				<fixr:fieldRef id="55" presence="required" />
+				<fixr:fieldRef id="225" presence="required" />
+				<fixr:fieldRef id="6215" presence="required" />
+				<fixr:fieldRef id="9216" presence="required" />
+				<fixr:fieldRef id="262" presence="required" />
+				<fixr:groupRef id="2001" presence="required" />
+				<fixr:componentRef id="1002" presence="required" />
+			</fixr:structure>
+		</fixr:message>
+
+		<fixr:message name="IOI" id="7" msgType="6" category="App">
+			<fixr:structure>
+				<fixr:componentRef id="1001" presence="required" />
+				<fixr:fieldRef id="23" presence="required" />
+				<fixr:fieldRef id="28" presence="required" />
+				<fixr:fieldRef id="44" presence="required" />
+				<fixr:fieldRef id="55" presence="required" />
+				<fixr:fieldRef id="225" presence="required" />
+				<fixr:fieldRef id="6215" presence="required" />
+				<fixr:fieldRef id="9216" presence="required" />
+				<fixr:componentRef id="1002" presence="required" />
+			</fixr:structure>
+		</fixr:message>
+
+		<fixr:message name="QuoteResponse" id="36" msgType="AJ" category="App">
+			<fixr:structure>
+				<fixr:componentRef id="1001" presence="required" />
+				<fixr:fieldRef id="23" presence="required" />
+				<fixr:fieldRef id="44" presence="required" />
+				<fixr:fieldRef id="55" presence="required" />
+				<fixr:fieldRef id="225" presence="required" />
+				<fixr:fieldRef id="6215" presence="required" />
+				<fixr:fieldRef id="9216" presence="required" />
+				<fixr:fieldRef id="537" presence="required" />
+				<fixr:fieldRef id="693" presence="required" />
+				<fixr:fieldRef id="694" presence="required" />
+				<fixr:componentRef id="1002" presence="required" />
+			</fixr:structure>
+		</fixr:message>
+
+		<fixr:message name="MarketDataIncrementalRefresh" id="24" msgType="X" category="App">
+			<fixr:structure>
+				<fixr:componentRef id="1001" presence="required" />
+				<fixr:fieldRef id="55" presence="required" />
+				<fixr:fieldRef id="225" presence="required" />
+				<fixr:fieldRef id="6215" presence="required" />
+				<fixr:fieldRef id="9216" presence="required" />
+				<fixr:fieldRef id="262" presence="optional" />
+				<fixr:groupRef id="2002" presence="required" />
+				<fixr:componentRef id="1002" presence="required" />
+			</fixr:structure>
+		</fixr:message>
+	</fixr:messages>
+</fixr:repository>
