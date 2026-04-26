@@ -1,5 +1,22 @@
 # FIX Client
 
+A GUI for interacting with a FIX Session, with automatically filled messages/fields directly from the dictionary.
+Forked from https://github.com/GaryHughes/FixClient.
+
+To run just run the FixClient project.
+
+## Specify Dictionary or add new fields/messages/...
+The possible messages you can send, as well as the fields in each, are defined by the dictonary.
+
+### Changing the dictionary
+If you need to change the dictionary. 
+Fix.Dictionary contains a folder that contains the auto-generated fields. 
+In case you want to import a personal xml, just change in Fix.Dictionary.csproj.
+
+The xml are in orchestrations folder. You can also edit them to add increment new fields and so on.
+
+# Forked Readme
+
 [![FIX Client](https://github.com/GaryHughes/FixClient/actions/workflows/dotnet.yml/badge.svg)](https://github.com/GaryHughes/FixClient/actions/workflows/dotnet.yml)
 
 ## Synopsis
